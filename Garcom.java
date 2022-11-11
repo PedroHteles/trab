@@ -1,21 +1,22 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Garcom {
 
     private String nome;
-    private Integer cpf;
+    private String cpf;
     private String email;
     private Integer telefone;
     private String Sexo;
     private Double salarioFixo;
     private Integer dataNascimento;
-    private ArrayList<Mesa> mesas;
+    private ArrayList<Mesa> mesas = new ArrayList<>();
 
     public Garcom(
             String nome,
-            Integer cpf,
+            String cpf,
             String email,
             Integer telefone,
             String sexo,
@@ -42,10 +43,12 @@ public class Garcom {
         if(mesa.validarMesa(listaMesasCadastradas)) {
             if(mesa.verificarSeMesaEstaDisponivel()){
                 mesa.setGarcom(this);
-                if(this.mesas == null){
+                if(this.mesas.size() == 0){
                     ArrayList<Mesa> listames = new ArrayList<>();
                     listames.add(mesa);
                     this.mesas = listames;
+                }else{
+                    this.mesas.add(mesa);
                 }
             }else{System.out.println("mesa: " + mesa.getNumero() + " ja foi registrada pelo garcom: " + mesa.getGarcom().getNome());}
         } else System.out.println("Mesa nao cadastrada no sistema");
@@ -55,11 +58,8 @@ public class Garcom {
         this.nome = nome;
     }
 
-    public Integer getCpf() {
-        return cpf;
-    }
 
-    public void setCpf(Integer cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -122,7 +122,7 @@ public class Garcom {
         }
     }
     public void  removeMesa(Mesa mesa){
-       this.mesas = (ArrayList<Mesa>) this.mesas.stream().filter(e -> e != mesa).collect(Collectors.toList());
+        this.mesas = (ArrayList<Mesa>) this.mesas.stream().filter(e -> !Objects.equals(e,mesa)).collect(Collectors.toList());
     }
     public void setMesa(Mesa mesa) {
 

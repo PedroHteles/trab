@@ -8,13 +8,20 @@ public class TrabalhoPart1Jean {
         ArrayList<Garcom> listaGarcoms = new ArrayList<>();
 
         Mesa mesa1 = new Mesa(1,10);
+        Mesa mesa2 = new Mesa(2,10);
 
         mesa1.cadastrarMesa(listaMesas);
+        mesa2.cadastrarMesa(listaMesas);
+        Garcom pedro = new Garcom("PedrinDelas","1","pedroteles829@gmail.com",123456789,"m",1099.00,123456);
+        Garcom teste = new Garcom("Pedrins","12","pedroteles829@gmail.com",1234567213,"m",1099.00,123456);
 
-        Garcom pedro = new Garcom("PedrinDelas",1,"pedroteles829@gmail.com",123456789,"m",1099.00,123456);
         pedro.cadastrarGarcomNoSistema(listaGarcoms);
+        teste.cadastrarGarcomNoSistema(listaGarcoms);
 
         pedro.relacionarMesaAoGarcom(mesa1,listaMesas);
-//        pedro.relacionarMesaAoGarcom(mesa1,listaMesas);
+        pedro.relacionarMesaAoGarcom(mesa2,listaMesas);
+        teste.relacionarMesaAoGarcom(mesa2,listaMesas);
+        System.out.println(teste.getMesas().size());
+
     }
 }
