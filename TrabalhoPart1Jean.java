@@ -1,47 +1,20 @@
 import java.util.ArrayList;
-import java.util.Objects;
+
 
 public class TrabalhoPart1Jean {
     public static void main(String[] args) {
         ArrayList<Mesa> listaMesas = new ArrayList<>();
+
         ArrayList<Garcom> listaGarcoms = new ArrayList<>();
 
-        Mesa teste = new Mesa();
-        teste.setNumero(1);
+        Mesa mesa1 = new Mesa(1,10);
 
-        Garcom testeGarcom = new Garcom();
-        testeGarcom.setNome("pedro");
+        mesa1.cadastrarMesa(listaMesas);
 
-        listaMesas.add(teste);
-        listaGarcoms.add(testeGarcom);
-        relacionarMesaAoGarcom(teste,testeGarcom,listaGarcoms,listaMesas);
-        relacionarMesaAoGarcom(teste,testeGarcom,listaGarcoms,listaMesas);
+        Garcom pedro = new Garcom("PedrinDelas",1,"pedroteles829@gmail.com",123456789,"m",1099.00,123456);
+        pedro.cadastrarGarcomNoSistema(listaGarcoms);
 
-
+        pedro.relacionarMesaAoGarcom(mesa1,listaMesas);
+//        pedro.relacionarMesaAoGarcom(mesa1,listaMesas);
     }
-
-
-    public static void relacionarMesaAoGarcom(
-            Mesa mesa,
-            Garcom garcom,
-            ArrayList<Garcom> listaGarcom,
-            ArrayList<Mesa> listaMesas
-    ) {
-        if (!listaMesas.stream().anyMatch(e -> Objects.equals(e.getNumero(),
-                mesa.getNumero()))) {
-            System.out.println("mesa nao valida");
-
-        } else if ((listaGarcom.stream().anyMatch(e -> Objects.equals(e.getCpf(),
-                garcom.getCpf())))) {
-            for(Garcom a : listaGarcom){
-                if(Objects.equals(garcom.getCpf(), a.getCpf())){
-                    garcom.adicionarNovaMesa(mesa);
-                    System.out.println("teste " + garcom.getNome());
-
-                }
-            }
-        }
-    }
-
-
 }
