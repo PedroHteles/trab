@@ -54,11 +54,24 @@ public class Garcom {
         } else System.out.println("Mesa nao cadastrada no sistema");
     }
 
+    public ArrayList<Mesa> quantidadeDeMesasAtual(){return this.mesas;}
+    public  void cadastrarGarcomNoSistema(ArrayList<Garcom> listG){
+        if(listG != null){
+            if(listG.stream().filter(e -> Objects.equals(e, this)).collect(Collectors.toList()).size() == 0){
+                listG.add(this);
+            }else{
+                System.out.println("Garcom ja registrado");
+            }
+        }
+    }
+    public void  removeMesa(Mesa mesa){
+        mesa.removeGarcom();
+        this.mesas.remove(mesa);
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
@@ -105,26 +118,5 @@ public class Garcom {
 
     public ArrayList<Mesa> getMesas() {
         return mesas;
-    }
-
-    public void setMesas(ArrayList<Mesa> mesas) {
-        this.mesas = mesas;
-    }
-
-    public ArrayList<Mesa> quantidadeDeMesasAtual(){return this.mesas;}
-    public  void cadastrarGarcomNoSistema(ArrayList<Garcom> listG){
-        if(listG != null){
-            if(listG.stream().filter(e -> Objects.equals(e, this)).collect(Collectors.toList()).size() == 0){
-                listG.add(this);
-            }else{
-                System.out.println("Garcom ja registrado");
-            }
-        }
-    }
-    public void  removeMesa(Mesa mesa){
-        this.mesas = (ArrayList<Mesa>) this.mesas.stream().filter(e -> !Objects.equals(e,mesa)).collect(Collectors.toList());
-    }
-    public void setMesa(Mesa mesa) {
-
     }
 }

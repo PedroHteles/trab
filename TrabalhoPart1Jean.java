@@ -20,8 +20,9 @@ public class TrabalhoPart1Jean {
 
         pedro.relacionarMesaAoGarcom(mesa1,listaMesas);
         pedro.relacionarMesaAoGarcom(mesa2,listaMesas);
+        pedro.removeMesa(mesa2);
         teste.relacionarMesaAoGarcom(mesa2,listaMesas);
-        System.out.println(teste.getMesas().size());
+        System.out.println(pedro.getMesas().size());
 
     }
 }

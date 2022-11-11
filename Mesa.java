@@ -33,4 +33,5 @@ public class Mesa {
     }
     public boolean verificarSeMesaEstaDisponivel(){ return this.garcom == null;}
     public void setGarcom(Garcom garcom) {this.garcom = garcom;}
+    public void removeGarcom() {this.garcom = null;}
 }
